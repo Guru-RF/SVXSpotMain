@@ -30,7 +30,6 @@ else
   systemctl start fmchip-monitor
 fi
 
-exit
 OLDCPVOL=$(grep volume /usr/sbin/hotspot | awk '{ print $6}'| tail -n 1)
 OLDRFVOL=$(grep Capture /usr/sbin/hotspot_volume | awk '{ print $4}'| tail -n 1 | sed 's/%$//')
 OLDAFVOL=$(grep Headphone /usr/sbin/hotspot_volume | awk '{ print $4}'| tail -n 1 | sed 's/%$//')
