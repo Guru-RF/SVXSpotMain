@@ -23,11 +23,10 @@ MACROS=Macros
 [ReflectorLogic]
 TYPE=Reflector
 ID=9
-HOSTS=127.0.0.1
-CALLSIGN="RFGURU"
-AUTH_KEY="ipsumlipum"
+DNS_DOMAIN=be.svx.link
+CALLSIGN="ON9RFG"
 DEFAULT_TG=8
-MONITOR_TGS=8,4,23
+MONITOR_TGS=8
 ANNOUNCE_REMOTE_MIN_INTERVAL=3600
 EVENT_HANDLER=/usr/share/svxlink/events.tcl
 NODE_INFO_FILE=/etc/svxlink/node_info.json
