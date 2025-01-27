@@ -22,7 +22,7 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 say "Stop svxlink"
-run "systemctl stop svxlink":::
+run "systemctl stop svxlink"
 say "remove old kernels"
 bash ./remove-old-kernels.sh
 say "cleanup logs"
