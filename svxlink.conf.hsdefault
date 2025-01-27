@@ -23,7 +23,7 @@ MACROS=Macros
 [ReflectorLogic]
 TYPE=Reflector
 ID=9
-DNS_DOMAIN=be.svx.link
+DNS_DOMAIN=
 CALLSIGN="ON9RFG"
 DEFAULT_TG=8
 MONITOR_TGS=8
