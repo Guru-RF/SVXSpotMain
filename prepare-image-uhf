@@ -37,7 +37,9 @@ say "remove pki's"
 say "install default hotspot config and frequency"
 cat hotspot-uhf >/usr/sbin/hotspot
 
-say "remove svxspot repo and"
-say "run:"
-say "cd ..; rm -fr SVXSpotMain; history -c && history -w"
-say "as root as root and halt the system"
+say "remove svxspot repo and ha"
+cd ..
+rm -fr SVXSpotMain
+history -c
+history -w
+say "halt the system"
