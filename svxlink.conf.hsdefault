@@ -1,6 +1,7 @@
 [GLOBAL]
 LOGIC_CORE_PATH=/usr/lib/aarch64-linux-gnu/svxlink/
-LOGICS=SimplexLogic,ReflectorLogic
+LOGICS=SimplexLogic
+#,ReflectorLogic
 CFG_DIR=svxlink.d
 TIMESTAMP_FORMAT="%c"
 CARD_SAMPLE_RATE=48000
