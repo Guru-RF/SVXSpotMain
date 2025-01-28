@@ -40,6 +40,7 @@ cat hotspot-uhf >/usr/sbin/hotspot
 say "remove svxspot repo and ha"
 cd ..
 rm -fr SVXSpotMain
-history -c
-history -w
-say "halt the system"
+say "run as root:"
+say "> history -c"
+say "> history -w"
+say "> halt"
