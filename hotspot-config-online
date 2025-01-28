@@ -178,7 +178,7 @@ fi
 TGS=$(gum input --value "${OLDTGS}")
 gum style --foreground 212 "${TGS}"
 
-gum style --foreground "#04B575" "Enter AF output volume [50-80] (default 65):"
+gum style --foreground "#04B575" "Enter AF output volume [50-80] (default 66):"
 AFVOL=$(gum input --value "${OLDAFVOL}")
 if [[ "${AFVOL}" == "" ]]; then
   AFVOL=65
