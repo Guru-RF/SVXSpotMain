@@ -239,7 +239,7 @@ if [ $RESULT -eq 0 ]; then
 	perl -i -pe "s/--TGS--/${TGS}/g" /etc/svxlink/svxlink.conf
 	perl -i -pe "s/--CALL--/${CALL}/g" /etc/svxlink/node_info.json
 	perl -i -pe "s/--SVXCALL--/${SVXCALL}/g" /etc/svxlink/svxlink.conf
-  perl -i -pe "s/--SVXEMAIL--/${SVXEMAIL}/g" /etc/svxlink/svxlink.conf
+  perl -i -pe "s/--SVXEMAIL--/$(printf '%s' "$SVXEMAIL" | sed 's/@/\\@/g')/g" /etc/svxlink/svxlink.conf
 	perl -i -pe "s/--LOCATION--/${LOCATION}/g" /etc/svxlink/node_info.json
 	perl -i -pe "s/--LAT--/${LAT}/g" /etc/svxlink/node_info.json
 	perl -i -pe "s/--LON--/${LON}/g" /etc/svxlink/node_info.json
