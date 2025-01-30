@@ -66,6 +66,7 @@ OLDSVXCALL=$(cat /etc/svxlink/svxlink.conf | grep CALLSIGN | tr "=" "\n" | grep 
 if [[ "${OLDSVXCALL}" == *"--"* ]]; then
   OLDSVXCALL="ON0RFG"
 fi
+OLDSVXEMAIL=$(cat /etc/svxlink/svxlink.conf | grep CERT_ EMAIL | tr "=" "\n" | grep \" | tr -cd '[:alnum:]._-@')
 
 gum style --border normal --margin "1" --padding "1 2" --border-foreground "#04B575" "$(gum style --foreground 3 'RF.')Guru $(gum style --foreground 3 '-') Hotspot Config"
 
@@ -87,6 +88,13 @@ gum style --foreground "#04B575" "SVXLINK Reflector User Callsign:"
 SVXCALL=$(gum input --value "${OLDSVXCALL}")
 if [[ "${SVXCALL}" == "" ]]; then
   SVXCALL=${OLDSVXCALL}
+fi
+gum style --foreground 212 "${SVXCALL}"
+
+gum style --foreground "#04B575" "SVXLINK Reflector User Certificate Email:"
+SVXEMAIL=$(gum input --value "${OLDSVXEMAIL}")
+if [[ "${SVXEMAIL}" == "" ]]; then
+  SVXCALL=${OLDSVXEMAIL}
 fi
 gum style --foreground 212 "${SVXCALL}"
 
@@ -228,6 +236,7 @@ if [ $RESULT -eq 0 ]; then
 	perl -i -pe "s/--TGS--/${TGS}/g" /etc/svxlink/svxlink.conf
 	perl -i -pe "s/--CALL--/${CALL}/g" /etc/svxlink/node_info.json
 	perl -i -pe "s/--SVXCALL--/${SVXCALL}/g" /etc/svxlink/svxlink.conf
+  perl -i -pe "s/--SVXEMAIL--/${SVXEMAIL}/g" /etc/svxlink/svxlink.conf
 	perl -i -pe "s/--LOCATION--/${LOCATION}/g" /etc/svxlink/node_info.json
 	perl -i -pe "s/--LAT--/${LAT}/g" /etc/svxlink/node_info.json
 	perl -i -pe "s/--LON--/${LON}/g" /etc/svxlink/node_info.json
