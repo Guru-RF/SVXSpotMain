@@ -66,7 +66,10 @@ OLDSVXCALL=$(cat /etc/svxlink/svxlink.conf | grep CALLSIGN | tr "=" "\n" | grep 
 if [[ "${OLDSVXCALL}" == *"--"* ]]; then
   OLDSVXCALL="ON0RFG"
 fi
-OLDSVXEMAIL=$(cat /etc/svxlink/svxlink.conf | grep CERT_ EMAIL | tr "=" "\n" | grep \" | tr -cd '[:alnum:]._-@')
+OLDSVXEMAIL=$(grep CERT_EMAIL /etc/svxlink/svxlink.conf | tr "=" "\n" | grep \" | tr -cd '[:alnum:]._@-')
+if [[ "${OLDSVXEMAIL}" == *"--"* ]]; then
+  OLDSVXEMAIL="nobody@no.one"
+fi
 
 gum style --border normal --margin "1" --padding "1 2" --border-foreground "#04B575" "$(gum style --foreground 3 'RF.')Guru $(gum style --foreground 3 '-') Hotspot Config"
 
@@ -94,9 +97,9 @@ gum style --foreground 212 "${SVXCALL}"
 gum style --foreground "#04B575" "SVXLINK Reflector User Certificate Email:"
 SVXEMAIL=$(gum input --value "${OLDSVXEMAIL}")
 if [[ "${SVXEMAIL}" == "" ]]; then
-  SVXCALL=${OLDSVXEMAIL}
+  SVXEMAIL=${OLDSVXEMAIL}
 fi
-gum style --foreground 212 "${SVXCALL}"
+gum style --foreground 212 "${SVXEMAIL}"
 
 gum style --foreground "#04B575" "Band:"
 BAND=$(gum choose "70cm" "2m")
