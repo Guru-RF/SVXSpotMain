@@ -1,5 +1,7 @@
 #!/bin/bash
 
+TERM=xterm-256color
+
 gum style --border normal --margin "1" --padding "1 2" --border-foreground "#04B575" "$(gum style --foreground 3 'RF.')Guru $(gum style --foreground 3 '-') Hotspot Volume"
 
 run() {

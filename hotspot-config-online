@@ -257,7 +257,7 @@ if [ $RESULT -eq 0 ]; then
   echo "sa818 --port /dev/ttyAMA0 filters --emphasis disable --highpass disable --lowpass disable" >> /usr/sbin/hotspot
   echo "sa818 --port /dev/ttyAMA0 volume --level ${CPVOL}" >> /usr/sbin/hotspot
 	chmod +x /usr/sbin/hotspot
-  /usr/sbin/hotspot
+  run "/usr/sbin/hotspot"
   say "Configuring hotspot volume"
   echo "#!/bin/bash" > /usr/sbin/hotspot_volume
   echo "" >> /usr/sbin/hotspot_volume
@@ -278,20 +278,30 @@ amixer cset iface=MIXER,name='ALC Hold Time' 0
 amixer cset iface=MIXER,name='ALC Max Gain' 0
 amixer cset iface=MIXER,name='ALC Min Gain' 0
 amixer cset iface=MIXER,name='ADC High Pass Filter Switch' 0" >> /usr/sbin/hotspot_volume
-  /usr/sbin/hotspot_volume > /dev/null 2>&1
+  run "/usr/sbin/hotspot_volume > /dev/null 2>&1"
 	systemctl restart svxlink
 	systemctl restart fmchip-monitor
   say "Downloading hotspot-options"
   run "wget -O /usr/sbin/hotspot-options https://raw.githubusercontent.com/Guru-RF/SVXSpotMain/master/hotspot-options > /dev/null 2>&1"
   run "chmod +x /usr/sbin/hotspot-options"
-  say "Downloading hotspot-options"
+  say "Downloading hotspot-volume"
   run "wget -O /usr/sbin/hotspot-volume https://raw.githubusercontent.com/Guru-RF/SVXSpotMain/master/hotspot-volume > /dev/null 2>&1"
   run "chmod +x /usr/sbin/hotspot-volume"
+  say "Downloading hotspot-frequency"
+  run "wget -O /usr/sbin/hotspot-frequency https://raw.githubusercontent.com/Guru-RF/SVXSpotMain/master/hotspot-frequency > /dev/null 2>&1"
+  run "chmod +x /usr/sbin/hotspot-frequency"
+  say "Downloading hotspot-talkgroups"
+  run "wget -O /usr/sbin/hotspot-talkgroups https://raw.githubusercontent.com/Guru-RF/SVXSpotMain/master/hotspot-talkgroups > /dev/null 2>&1"
+  run "chmod +x /usr/sbin/hotspot-talkgroups"
   say "--> Done"
   say ""
   say "Send any CTCSS tone to ${FREQ} with D1# to activate the parrot (to test audio levels)"
   say "Send CTCSS tone mapped to a channel to switch talkgroup (only when there is no traffic and you are in TG0)"
   say "You here a small two-tone when we are back in listening mode on TG0, when there is traffic on a monitored it will be automaticaly activated !"
+  say ""
+  say "run [>sudo /usr/sbin/hotspot-volume] to adjust volume levels"
+  say "run [>sudo /usr/sbin/hotspot-frequency] to adjust frequency and tx ctcss tone"
+  say "run [>sudo /usr/sbin/hotspot-talkgroups] to adjust talkgroups"
 else
 gum style --foreground "#04B575" "Abort!"
 fi
