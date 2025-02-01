@@ -17,6 +17,9 @@ variable selected_tg 0
 # The previously selected TG. Variable set from application.
 variable previous_tg 0
 
+# on6ure previous callsign
+variable previous_callsign ON0RFG
+
 # Timestamp for previous TG announcement
 variable prev_announce_time 0
 
@@ -57,7 +60,6 @@ proc say_talkgroup {tg} {
     spellNumber $tg
   }
 }
-
 
 #
 # Executed when an unknown command is received
@@ -372,12 +374,16 @@ proc tg_selection_timeout {new_tg old_tg} {
 proc talker_start {tg callsign} {
   variable selected_tg
   variable ::Logic::CFG_CALLSIGN
+  variable previous_callsign
+  #puts "Previous Callsign: $previous_callsign"
   #puts "### Talker start on TG #$tg: $callsign"
-  if {($tg == $selected_tg) && ($callsign != $::Logic::CFG_CALLSIGN)} {
-	#playSilence 100
+  if {($previous_callsign != $callsign)} {
+    set previous_callsign $callsign
+    if {($tg == $selected_tg) && ($callsign != $::Logic::CFG_CALLSIGN)} {
+        #puts "Playing Remote Station Callsign: $callsign"
 	spellWord "$callsign"
-	#CW::play "$callsign" 210 1000 -25
-	puts "Playing Remote Station Callsign: $callsign"
+#	#CW::play "$callsign" 210 1000 -25
+    }
   }
 }
 
