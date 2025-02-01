@@ -377,13 +377,13 @@ proc talker_start {tg callsign} {
   variable previous_callsign
   #puts "Previous Callsign: $previous_callsign"
   #puts "### Talker start on TG #$tg: $callsign"
-#  if {($previous_callsign != $callsign)} {
-#    set previous_callsign $callsign
-#    if {($tg == $selected_tg) && ($callsign != $::Logic::CFG_CALLSIGN)} {
-#        #puts "Playing Remote Station Callsign: $callsign"
-#	spellWord "$callsign"
+  if {($previous_callsign != $callsign)} {
+    set previous_callsign $callsign
+    if {($tg == $selected_tg) && ($callsign != $::Logic::CFG_CALLSIGN)} {
+        #puts "Playing Remote Station Callsign: $callsign"
+	spellWord "$callsign"
 #	#CW::play "$callsign" 210 1000 -25
-#    }
+    }
   }
 }
 
