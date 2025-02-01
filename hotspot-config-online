@@ -206,7 +206,7 @@ gum style --foreground 212 "${RFVOL}"
 gum style --foreground "#04B575" "Enter RF compression [1-8] (default 2):"
 CPVOL=$(gum input --value "${OLDCPVOL}")
 if [[ "${CPVOL}" == "" ]]; then
-  RFVOL=2
+  CPVOL=2
 fi
 gum style --foreground 212 "${CPVOL}"
 
@@ -281,9 +281,12 @@ amixer cset iface=MIXER,name='ADC High Pass Filter Switch' 0" >> /usr/sbin/hotsp
   /usr/sbin/hotspot_volume > /dev/null 2>&1
 	systemctl restart svxlink
 	systemctl restart fmchip-monitor
-  say "Installing hotspot-options"
+  say "Downloading hotspot-options"
   run "wget -O /usr/sbin/hotspot-options https://raw.githubusercontent.com/Guru-RF/SVXSpotMain/master/hotspot-options > /dev/null 2>&1"
   run "chmod +x /usr/sbin/hotspot-options"
+  say "Downloading hotspot-options"
+  run "wget -O /usr/sbin/hotspot-volume https://raw.githubusercontent.com/Guru-RF/SVXSpotMain/master/hotspot-volume > /dev/null 2>&1"
+  run "chmod +x /usr/sbin/hotspot-volume"
   say "--> Done"
   say ""
   say "Send any CTCSS tone to ${FREQ} with D1# to activate the parrot (to test audio levels)"
