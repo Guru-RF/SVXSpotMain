@@ -35,5 +35,9 @@ This image is designed for **UHF transceivers/hotspots**.
 
 ### Additional Feature:
 - Sending `D911#` will return the **IP address**, making it easy to access the dashboard.
+- `hotspot-frequency` fast conifg to change frequency
+- `hotspot-options` fast config to set options
+- `hotspot-talkgroups` fast config to change/add default talkgroup and talkgroup to ctcss mapping
+- `hotspot-volume` fast config option to set volume
 
 ---
