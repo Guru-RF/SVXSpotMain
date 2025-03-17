@@ -18,7 +18,7 @@ say () {
 OLDRFVOL=$(grep Capture /usr/sbin/hotspot_volume | awk '{ print $4}'| tail -n 1 | sed 's/%$//')
 OLDAFVOL=$(grep Headphone /usr/sbin/hotspot_volume | awk '{ print $4}'| tail -n 1 | sed 's/%$//')
 
-gum style --foreground "#04B575" "Enter AF output volume [50-80] (default 66):"
+gum style --foreground "#04B575" "Enter AF output volume [50-80] (default 69):"
 AFVOL=$(gum input --value "${OLDAFVOL}")
 if [[ "${AFVOL}" == "" ]]; then
   AFVOL=65
