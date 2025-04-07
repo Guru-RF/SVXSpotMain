@@ -15,7 +15,7 @@
 This repository tracks the **main branch** of SVXLink. Most features are identical to the stable branch, with some notable new additions:
 
 - **Encryption** for enhanced security.
-- **Passwordless authentication** for ease of use.  
+- **Passwordless authentication** for ease of use. (Your device requests the certificate, we will confirm via the entered email adress in the configurtion)
 
 After running the configurator, your **SVXReflector sysop** will need to sign your certificate. Once that's done, you're all set!
 
