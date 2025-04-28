@@ -19,7 +19,6 @@
 [Unit]
 Description=SvxLink repeater control software
 Documentation=man:svxlink(1)
-Requires=svxlink_gpio_setup.service
 After=network.target remote-fs.target syslog.target time.target
 After=wm8960-soundcard.service
 
@@ -29,6 +28,7 @@ PIDFile=${PIDFILE}
 ExecStartPre=-rm -f /tmp/state
 ExecStartPre=-/bin/touch ${LOGFILE}
 ExecStartPre=-/bin/chown ${RUNASUSER} ${LOGFILE}
+ExecStartPre=-/bin/chown -R ${RUNASUSER}:${RUNASUSER} /var/lib/svxlink
 ExecStartPre=-/usr/sbin/svxlink_checkalsa
 ExecStartPre=-/usr/sbin/hotspot
 ExecStartPre=-/usr/sbin/hotspot_volume
